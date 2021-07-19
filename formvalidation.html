@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+body{
+    background-color:rgb(153, 165, 238);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+#form-container{
+    background-color: white;
+text-align:center;
+padding:60px;
+}
+h2{
+    margin:0px 2px 8px 0px;
+}
+.error{
+    color:red;
+    margin:0px;
+    text-align: left;
+}
+input{
+width:210px;
+margin:15px 0px;
+padding:12px;
+}
+input[type="submit"]{
+    background-color: rgb(153, 165, 238);
+border:0px;
+color:rgb(12, 11, 11);
+font-weight:bold;
+}
+h2:hover{
+ cursor:pointer;
+}
+input[type="submit"],input[type="text"],input[type="password"],input[type="mobilenumber"],input[type="email"]:hover{
+    cursor:pointer;
+}
+    </style>
+</head>
+<body>
+<div id="form-container">  
+<h2>Login</h2>
+<form action="" onsubmit="return validateForm()">
+<input type="text" placeholder="User Name" id="username"><br>
+<p id="userError" class="error"></p>
+<input type="password" placeholder="Password" id="password"><br>
+<p id="passError" class="error"></p>
+<input type="mobilenumber" placeholder="Mobile Number" id="mobilenumber"><br>
+<p id="mobilenumberError" class="error"></p>
+<input type="email" placeholder="Email" id="email"><br>
+<p id="emailError" class="error"></p>
+<input type="submit">
+</form>
+</div>
+
+<script>
+let username = document.getElementById("username");
+let password = document.getElementById("password");
+let mobilenumber = document.getElementById("mobilenumber");
+let email = document.getElementById("email");
+let flag = 1;
+
+function validateForm(){
+if(username.value == ""){
+document.getElementById("userError").innerHTML = "User Name Is Empty!";
+flag =0;
+}else if(username.value.length < 3){
+    document.getElementById("userError").innerHTML = "User Name require minimum 3 characters!";
+flag = 0;
+}else{
+    document.getElementById("userError").innerHTML = "";
+flag = 1;
+}
+
+if(password.value == ""){
+    document.getElementById("passError").innerHTML = "Password Is Empty!";
+flag = 0;
+}else{
+    document.getElementById("passError").innerHTML = "";
+flag = 1;
+}
+if(mobilenumber.value == ""){
+document.getElementById("mobilenumberError").innerHTML = "Mobile Number Is Empty!";
+flag = 0;
+}else if(mobilenumber.value.length < 10){
+    document.getElementById("mobileError").innerHTML = "Mobile Number must require 10 numbers!";
+flag = 0;
+}else{
+    document.getElementById("mobilenumberError").innerHTML = "";
+    flag = 1;
+}
+if(email.value == ""){
+document.getElementById("emailError").innerHTML = "Email Is Empty!";
+flag = 0;
+}else{
+    document.getElementById("emailError").innerHTML = "";
+    flag = 1;
+}
+if(flag){
+return true;
+}else{
+    return false;
+}
+}
+</script>
+</body>
+</html>
